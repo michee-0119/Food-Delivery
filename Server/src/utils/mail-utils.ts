@@ -4,13 +4,11 @@ import { Resend } from "resend";
 
 configDotenv();
 
-const resend = new Resend (process.env.RESEND_API_KEY)
-
-
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const verifyUserEmail = async (reciever: string, verifyLink: string) => {
   await resend.emails.send({
-    from: `onboarding@resend.dev`,
+    from: "onboarding@resend.dev",
     to: reciever,
     subject: "Verify user",
     html: `
