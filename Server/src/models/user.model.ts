@@ -20,7 +20,7 @@ const UserSchema = new Schema<User>(
   {
     email: { type: String, required: true },
     password: { type: String, required: true },
-    phoneNumber: { type: String },
+    phoneNumber: { type: String, required: true },
     address: { type: String },
     role: {
       type: String,
