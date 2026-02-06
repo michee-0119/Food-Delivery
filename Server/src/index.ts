@@ -14,12 +14,13 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/users", userRouter);
-app.use("/food", foodRouter);
-app.use("/food-orders", foodOrderRouter);
-app.use("/food-category", categoryRouter);
+// app.use("/users", userRouter);
+// app.use("/food", foodRouter);
+// app.use("/food-orders", foodOrderRouter);
+// app.use("/food-category", categoryRouter);
 
 connectToMongoDb();
+
 app.listen(10000, () => {
   console.log("http://localhost:10000");
 });
