@@ -19,7 +19,7 @@ app.use("/food", foodRouter);
 app.use("/food-orders", foodOrderRouter);
 app.use("/food-category", categoryRouter);
 
-app.listen(8000, () => {
+app.listen(10000, () => {
   connectToMongoDb();
-  console.log("http://localhost:8000");
+  console.log("http://localhost:10000");
 });
