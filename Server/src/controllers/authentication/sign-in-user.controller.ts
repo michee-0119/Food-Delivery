@@ -8,10 +8,13 @@ export const signInUser = async (req: Request, res: Response) => {
     const user = await UserModel.findOne({ email });
 
     if (!user) return res.status(404).send({ message: "user not found" });
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
+
     console.log(isPasswordValid);
     if (!isPasswordValid)
       return res.status(404).send({ message: "user not found" });
+
     res
       .status(200)
       .send({ message: "user signed in successfully", data: user });
