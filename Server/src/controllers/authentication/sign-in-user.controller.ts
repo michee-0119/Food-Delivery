@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { UserModel } from "../../models";
 import bcrypt from "bcrypt";
 
-export const signInUser = async (req: Request, res: Response) => {
+export const signInController = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email });

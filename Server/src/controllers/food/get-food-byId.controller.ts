@@ -3,12 +3,12 @@ import { FoodModel } from "../../models";
 
 export const getFoodById = async (req: Request, res: Response) => {
   try {
-    const { picture, ingredients, name, price } = req.body;
+    const { picture, ingredients, foodName, price } = req.body;
 
     const getFood = await FoodModel.create({
       picture,
       ingredients,
-      name,
+      foodName,
       price,
     });
 

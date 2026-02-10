@@ -10,6 +10,7 @@ export const createFoodMenu = async (req: Request, res: Response) => {
     return res.status(201).json({
       message: "Foods created successfully",
       data: createFoods,
+      user: req.body,
     });
   } catch (error) {
     console.error(error);

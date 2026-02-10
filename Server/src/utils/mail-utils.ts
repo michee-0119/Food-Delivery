@@ -12,7 +12,7 @@ export const verifyUserEmail = async (reciever: string, verifyLink: string) => {
     to: reciever,
     subject: "Verify user",
     html: `
-        <div
+        <div 
   style="
     width: 300px;
     height: 250px;

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { FoodOrderModel } from "../../models";
 import mongoose from "mongoose";
 
-export const updatedFoodByFoodOrderId = async (req: Request, res: Response) => {
+export const  updatedFoodByFoodOrderId = async (req: Request, res: Response) => {
   try {
     const { foodOrderId } = req.params;
 

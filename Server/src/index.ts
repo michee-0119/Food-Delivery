@@ -15,7 +15,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/authentication", userRouter);
-app.use("/food", foodRouter);
+app.use("/foods", foodRouter);
+app.use("/categories", categoryRouter);
 
 connectToMongoDb();
 
