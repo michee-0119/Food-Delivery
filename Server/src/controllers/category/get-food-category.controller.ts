@@ -9,8 +9,6 @@ export const getFoodCategory = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
 
-    return res
-      .status(500)
-      .send({ message: "Failed getching categories", error });
+    return res.status(500).send({ message: "Failed to get categories", error });
   }
 };

@@ -3,18 +3,16 @@ import { FoodModel } from "../../models";
 
 export const getFoodById = async (req: Request, res: Response) => {
   try {
-    const { picture, ingredients, foodName, price } = req.body;
+    const foods = await FoodModel.find()
+      .populate("categoryId")
+      .sort({ createdAt: -1 });
 
-    const getFood = await FoodModel.create({
-      picture,
-      ingredients,
-      foodName,
-      price,
-    });
-
-    res.status(200).send({ message: "Food appeared", data: getFood });
+    res.status(200).send({ message: "Food appeared", data: foods });
   } catch (error) {
     console.error(error);
-    res.status(200).send(error);
+    return res.status(500).send({
+      message: "Error fetching food",
+      error,
+    });
   }
 };

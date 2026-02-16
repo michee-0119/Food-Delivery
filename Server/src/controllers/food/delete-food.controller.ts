@@ -7,10 +7,14 @@ export const deleteFoodMenu = async (req: Request, res: Response) => {
 
     const deleteFoods = await FoodModel.findOneAndDelete(id);
 
-    res
+    if (!deleteFoods)
+      return res.status(400).send({ message: "Food is not found" });
+
+    return res
       .status(200)
       .send({ message: "Deleted successfully", data: deleteFoods });
   } catch (error) {
-    res.status(200).send(console.error(error));
+    console.error(error);
+    return res.status(500).send({ message: "Failed to delete a food", error });
   }
 };

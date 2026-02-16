@@ -3,17 +3,28 @@ import { FoodModel } from "../../models";
 
 export const createFoodMenu = async (req: Request, res: Response) => {
   try {
-    const foods = req.body;
+    const { name, price, categoryId, image, description } = req.body;
 
-    const createFoods = await FoodModel.insertMany(foods);
+    if (!name || !price || !categoryId) {
+      return res
+        .status(400)
+        .send({ message: "Food name, price, and categoryId are required" });
+    }
 
-    return res.status(201).json({
+    const food = await FoodModel.create({
+      name,
+      price,
+      categoryId,
+      image,
+      description,
+    });
+
+    return res.status(201).send({
       message: "Foods created successfully",
-      data: createFoods,
-      user: req.body,
+      data: food,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Failed to create foods" });
+    return res.status(500).send({ message: "Failed to create foods", error });
   }
 };

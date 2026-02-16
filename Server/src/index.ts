@@ -14,9 +14,10 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/authentication", userRouter);
+app.use("/auth", userRouter);
 app.use("/foods", foodRouter);
 app.use("/categories", categoryRouter);
+app.use("/orders", foodOrderRouter);
 
 connectToMongoDb();
 

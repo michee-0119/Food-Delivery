@@ -16,6 +16,8 @@ export const deleteCategory = async (req: Request, res: Response) => {
       .send({ message: "Category is deleted successfully" });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ message: "Failed deleting category", error });
+    return res
+      .status(500)
+      .send({ message: "Failed to delete a category", error });
   }
 };

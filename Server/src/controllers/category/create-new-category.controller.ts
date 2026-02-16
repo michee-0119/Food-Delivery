@@ -6,7 +6,7 @@ export const createNewCategory = async (res: Response, req: Request) => {
     const { categoryName } = req.body;
 
     if (!categoryName || typeof categoryName !== "string") {
-      return res.status(400).send({ message: "Category name is requires" });
+      return res.status(400).send({ message: "Category name is required" });
     }
 
     const existingCaetgory = await FoodCategoryModel.findOne({
@@ -15,7 +15,7 @@ export const createNewCategory = async (res: Response, req: Request) => {
 
     if (existingCaetgory)
       return res
-        .status(409)
+        .status(400)
         .send({ message: "This category is already created" });
 
     const category = await FoodCategoryModel.create({ categoryName });
@@ -24,6 +24,8 @@ export const createNewCategory = async (res: Response, req: Request) => {
       .status(200)
       .send({ message: "Created new category successfully", data: category });
   } catch (error) {
-    return res.status(200).json({ message: "Failed creating category", error });
+    return res
+      .status(200)
+      .json({ message: "Failed to create category", error });
   }
 };

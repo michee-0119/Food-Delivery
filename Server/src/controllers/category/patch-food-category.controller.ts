@@ -3,7 +3,7 @@ import { FoodCategoryModel } from "../../models";
 
 export const updateCategory = async (req: Request, res: Response) => {
   try {
-    const { foodCaetgoryId } = req.params;
+    const { foodCategoryId } = req.params;
     const { categoryName } = req.body;
 
     if (!categoryName || typeof categoryName !== "string") {
@@ -11,7 +11,7 @@ export const updateCategory = async (req: Request, res: Response) => {
     }
 
     const updated = await FoodCategoryModel.findByIdAndUpdate(
-      foodCaetgoryId,
+      foodCategoryId,
       { categoryName },
       { new: true },
     );
@@ -24,6 +24,8 @@ export const updateCategory = async (req: Request, res: Response) => {
       .send({ message: "Category is updated successfully", data: updated });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({ message: "Failed updating category", error });
+    return res
+      .status(500)
+      .send({ message: "Failed to update category", error });
   }
 };

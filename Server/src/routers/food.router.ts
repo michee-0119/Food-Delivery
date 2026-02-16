@@ -14,4 +14,4 @@ foodRouter.post(
   createFoodMenu,
 );
 foodRouter.delete("/:foodId", deleteFoodMenu);
-foodRouter.patch("/:foodId", getFoodById);
+foodRouter.patch("/foodid", getFoodById);
